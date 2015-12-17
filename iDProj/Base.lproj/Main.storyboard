@@ -83,11 +83,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bild1.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="7Lt-gM-gJR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mail-Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-rN-cof">
                                 <rect key="frame" x="85" y="244" width="150" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7U1-o3-jk3"/>
-                                    <constraint firstAttribute="width" constant="150" id="AYC-Lc-wjn"/>
+                                    <constraint firstAttribute="height" constant="30" id="8NA-gI-nRh"/>
+                                    <constraint firstAttribute="width" constant="150" id="Xap-eY-Olo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -95,8 +98,8 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q63-bi-kM2">
                                 <rect key="frame" x="85" y="290" width="150" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Iz3-f4-OlH"/>
-                                    <constraint firstAttribute="width" constant="150" id="xgI-ly-Aw3"/>
+                                    <constraint firstAttribute="height" constant="30" id="4uy-pf-fSC"/>
+                                    <constraint firstAttribute="width" constant="150" id="i9f-qS-oyy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
@@ -105,8 +108,8 @@
                                 <rect key="frame" x="125" y="328" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.31299083769633507" green="0.31299083769633507" blue="0.31299083769633507" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="IAU-Ze-KBE"/>
-                                    <constraint firstAttribute="width" constant="70" id="Xby-Xa-aka"/>
+                                    <constraint firstAttribute="height" constant="30" id="bEB-Dx-NWa"/>
+                                    <constraint firstAttribute="width" constant="70" id="yIR-yp-EZQ"/>
                                 </constraints>
                                 <state key="normal" title="Anmelden">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,12 +126,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="top" secondItem="q63-bi-kM2" secondAttribute="bottom" constant="8" symbolic="YES" id="Jmr-z9-9Qi"/>
-                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerX" secondItem="AAL-rN-cof" secondAttribute="centerX" id="Qm4-Ki-zh0"/>
-                            <constraint firstItem="q63-bi-kM2" firstAttribute="top" secondItem="AAL-rN-cof" secondAttribute="bottom" constant="16" id="WB5-aS-01Y"/>
-                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="gx3-b4-FmD"/>
-                            <constraint firstItem="AAL-rN-cof" firstAttribute="top" secondItem="Xfp-pQ-V3z" secondAttribute="bottom" constant="224" id="nJ8-Fb-tlh"/>
-                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerX" secondItem="q63-bi-kM2" secondAttribute="centerX" id="ri8-RV-M4I"/>
+                            <constraint firstItem="7Lt-gM-gJR" firstAttribute="leading" secondItem="7kn-a0-vDp" secondAttribute="leading" id="3fJ-NM-7dp"/>
+                            <constraint firstItem="AAL-rN-cof" firstAttribute="centerY" secondItem="7kn-a0-vDp" secondAttribute="centerY" constant="-25" id="41n-B7-15T"/>
+                            <constraint firstItem="7Lt-gM-gJR" firstAttribute="centerX" secondItem="O9Q-hp-KIG" secondAttribute="centerX" id="9ab-Ob-fpw"/>
+                            <constraint firstItem="q63-bi-kM2" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="LM8-Cc-IeK"/>
+                            <constraint firstItem="7Lt-gM-gJR" firstAttribute="top" secondItem="7kn-a0-vDp" secondAttribute="top" id="NA0-wz-zDg"/>
+                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerY" secondItem="7kn-a0-vDp" secondAttribute="centerY" constant="59" id="UcK-Kb-CiX"/>
+                            <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="cke-Xc-7he"/>
+                            <constraint firstItem="AAL-rN-cof" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="po2-1S-z83"/>
+                            <constraint firstItem="7Lt-gM-gJR" firstAttribute="bottom" secondItem="NjZ-yJ-UOV" secondAttribute="top" id="qUF-Lj-3wg"/>
+                            <constraint firstItem="q63-bi-kM2" firstAttribute="centerY" secondItem="7kn-a0-vDp" secondAttribute="centerY" constant="21" id="sVh-sh-u6D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wTQ-eL-YK1"/>
@@ -240,6 +247,9 @@
             <point key="canvasLocation" x="550" y="-676"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Bild1.JPG" width="3888" height="2592"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bpi-6z-CPm"/>
         <segue reference="3hU-5W-Fyb"/>
