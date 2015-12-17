@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Reveal View Controller-->
@@ -123,6 +124,13 @@
                                     <segue destination="yMU-Hp-1xB" kind="push" id="3hU-5W-Fyb"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="BhX-Aj-qX9">
+                                <rect key="frame" x="20" y="20" width="98" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="0Jo-c2-6PZ"/>
+                                    <constraint firstAttribute="height" constant="54" id="CW8-41-00K"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -132,7 +140,9 @@
                             <constraint firstItem="q63-bi-kM2" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="LM8-Cc-IeK"/>
                             <constraint firstItem="7Lt-gM-gJR" firstAttribute="top" secondItem="7kn-a0-vDp" secondAttribute="top" id="NA0-wz-zDg"/>
                             <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerY" secondItem="7kn-a0-vDp" secondAttribute="centerY" constant="59" id="UcK-Kb-CiX"/>
+                            <constraint firstItem="BhX-Aj-qX9" firstAttribute="leading" secondItem="7kn-a0-vDp" secondAttribute="leadingMargin" constant="4" id="cFf-Ze-4S1"/>
                             <constraint firstItem="O9Q-hp-KIG" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="cke-Xc-7he"/>
+                            <constraint firstItem="BhX-Aj-qX9" firstAttribute="top" secondItem="Xfp-pQ-V3z" secondAttribute="bottom" id="pFU-0y-UH4"/>
                             <constraint firstItem="AAL-rN-cof" firstAttribute="centerX" secondItem="7kn-a0-vDp" secondAttribute="centerX" id="po2-1S-z83"/>
                             <constraint firstItem="7Lt-gM-gJR" firstAttribute="bottom" secondItem="NjZ-yJ-UOV" secondAttribute="top" id="qUF-Lj-3wg"/>
                             <constraint firstItem="q63-bi-kM2" firstAttribute="centerY" secondItem="7kn-a0-vDp" secondAttribute="centerY" constant="21" id="sVh-sh-u6D"/>
@@ -249,6 +259,7 @@
     </scenes>
     <resources>
         <image name="Bild1.JPG" width="3888" height="2592"/>
+        <image name="Logo.png" width="320" height="134"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bpi-6z-CPm"/>
