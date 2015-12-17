@@ -14,6 +14,7 @@ class BackTableVC: UITableViewController {
     
     override func viewDidLoad() {
         TableArray = ["Anmelden", "Ideen", "Test"]
+        self.view.backgroundColor = UIColor(red:0.83, green:0.33, blue:0.25, alpha:1.0)
     }
     //Rückgabe der Anzahl der Zeilen innerhalb der Tabelle
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,6 +27,8 @@ class BackTableVC: UITableViewController {
         //erstellte Zelle zurückgeben
         
         cell.textLabel?.text = TableArray[indexPath.row]
+        cell.backgroundColor = UIColor(red:0.83, green:0.33, blue:0.25, alpha:1.0)
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
 }
