@@ -13,7 +13,7 @@ class BackTableVC: UITableViewController {
     var TableArray = [String]()
     
     override func viewDidLoad() {
-        TableArray = ["Anmelden", "Ideen", "Test"]
+        TableArray = ["Idee einreichen", "Meine Ideen", "Logout"]
         self.view.backgroundColor = UIColor(red:0.83, green:0.33, blue:0.25, alpha:1.0)
     }
     //Rückgabe der Anzahl der Zeilen innerhalb der Tabelle

@@ -14,6 +14,7 @@ class ViewController3: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
