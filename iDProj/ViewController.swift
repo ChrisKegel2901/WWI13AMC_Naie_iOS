@@ -29,16 +29,24 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //////
     
     @IBAction func Login(sender: AnyObject) {
-    
+ 
+        
+        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+       
+       
         let username = UserName.text
         let password = Password.text
         
         ErrorText.text = ""
         if username! == "Detlef" && password == "123" {
           returnValue = true
+            prefs.setObject(username, forKey: "USERNAME")
+            
+            //prefs.setObject(self.vorname, forKey: "VORNAME")
+            prefs.setInteger(1, forKey: "ISLOGGEDIN")
+            prefs.synchronize()
         }
         
         if returnValue
@@ -47,6 +55,7 @@ class ViewController: UIViewController {
         }
         else{
             ErrorText.text = "Der Benutzername oder das Passwort ist nicht korrekt. Bitte versuche es erneut."
+            ErrorText.textColor = UIColor.redColor()
         }
         
         print(username)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0117B3071C23032800E9AE70 /* Bild1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0117B3061C23032800E9AE70 /* Bild1.JPG */; };
 		0117B3091C23042400E9AE70 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0117B3081C23042400E9AE70 /* Logo.png */; };
+		01D651C51C45482F00DD87DC /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D651C41C45482F00DD87DC /* CustomCell.swift */; };
 		73239B731C205A5A00607B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73239B721C205A5A00607B88 /* AppDelegate.swift */; };
 		73239B751C205A5A00607B88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73239B741C205A5A00607B88 /* ViewController.swift */; };
 		73239B781C205A5B00607B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73239B761C205A5B00607B88 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		0117B3061C23032800E9AE70 /* Bild1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bild1.JPG; sourceTree = "<group>"; };
 		0117B3081C23042400E9AE70 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		01D651C41C45482F00DD87DC /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		73239B6F1C205A5A00607B88 /* iDProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73239B721C205A5A00607B88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73239B741C205A5A00607B88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				7375475D1C20802A000E4F91 /* ViewController2.swift */,
 				7375475F1C208137000E4F91 /* ViewController3.swift */,
 				73239B761C205A5B00607B88 /* Main.storyboard */,
+				01D651C41C45482F00DD87DC /* CustomCell.swift */,
 				73239BA41C206F6A00607B88 /* BackTableVC.swift */,
 				0117B3081C23042400E9AE70 /* Logo.png */,
 				73239B791C205A5B00607B88 /* Assets.xcassets */,
@@ -288,6 +291,7 @@
 				737547601C208137000E4F91 /* ViewController3.swift in Sources */,
 				73239B731C205A5A00607B88 /* AppDelegate.swift in Sources */,
 				73239BA51C206F6A00607B88 /* BackTableVC.swift in Sources */,
+				01D651C51C45482F00DD87DC /* CustomCell.swift in Sources */,
 				73239BA31C205A9100607B88 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
