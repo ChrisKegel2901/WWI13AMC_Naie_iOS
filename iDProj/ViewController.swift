@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var Username: UITextField!
+    @IBOutlet weak var UserName: UITextField!
+    
     @IBOutlet weak var Password: UITextField!
 
+   
+    @IBOutlet weak var ErrorText: UITextView!
+    var returnValue: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,8 +32,22 @@ class ViewController: UIViewController {
     
     
     @IBAction func Login(sender: AnyObject) {
-        let username = Username.text
+    
+        let username = UserName.text
         let password = Password.text
+        
+        ErrorText.text = ""
+        if username! == "Detlef" && password == "123" {
+          returnValue = true
+        }
+        
+        if returnValue
+        {
+            self.performSegueWithIdentifier("showTable", sender: self)
+        }
+        else{
+            ErrorText.text = "Der Benutzername oder das Passwort ist nicht korrekt. Bitte versuche es erneut."
+        }
         
         print(username)
         print(password)
