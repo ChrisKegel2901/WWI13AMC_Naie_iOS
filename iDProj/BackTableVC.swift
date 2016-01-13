@@ -13,9 +13,11 @@ class BackTableVC: UITableViewController {
     var TableArray = [String]()
     
     @IBOutlet weak var user: UILabel!
+   
     override func viewDidLoad() {
         TableArray = ["Idee einreichen", "Meine Ideen", "Logout"]
-        self.view.backgroundColor = UIColor.lightGrayColor()
+        //self.view.backgroundColor = UIColor.lightGrayColor()
+       
         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
        var test = prefs.stringForKey("USERNAME")
         user.text = test!
