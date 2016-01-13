@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomCell: UITableViewCell{
+class CellAlle: UITableViewCell{
     
     
     @IBAction func downVote(sender: AnyObject) {

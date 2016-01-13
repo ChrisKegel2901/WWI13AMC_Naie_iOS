@@ -15,12 +15,12 @@ class BackTableVC: UITableViewController {
     @IBOutlet weak var user: UILabel!
    
     override func viewDidLoad() {
-        TableArray = ["Idee einreichen", "Meine Ideen", "Logout"]
+        TableArray = ["Alle Ideen", "Idee einreichen", "Meine Ideen", "Logout"]
         //self.view.backgroundColor = UIColor.lightGrayColor()
        
-        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-       var test = prefs.stringForKey("USERNAME")
-        user.text = test!
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let username = prefs.stringForKey("USERNAME")
+        user.text = username!
     }
     //Rückgabe der Anzahl der Zeilen innerhalb der Tabelle
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

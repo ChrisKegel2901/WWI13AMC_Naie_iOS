@@ -1,5 +1,5 @@
 //
-//  ViewController2.swift
+//  IdeeMeine.swift
 //  iDProj
 //
 //  Created by wilabor on 15.12.15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ViewController2: UIViewController {
+class IdeeMeine: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,14 +1,15 @@
 //
-//  ViewController3.swift
+//  IdeeAlle.swift
 //  iDProj
 //
 //  Created by wilabor on 15.12.15.
 //  Copyright © 2015 Patrick Gutting. All rights reserved.
+// Startseite - Liste
 //
 
 import Foundation
 
-class ViewController3: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var TableData:Array< datastruct > = Array < datastruct >()
     var TableDataFiltered:Array< datastruct > = Array < datastruct >()
@@ -35,7 +36,6 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
 
         }
         
-        
     }
     struct datastruct
     {
@@ -55,7 +55,6 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var filter: UISegmentedControl!
     @IBOutlet weak var tableViewOutlet: UITableView!
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -68,7 +67,6 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
             
             return element1.date > element2.date
         }
-        
         tableViewOutlet.reloadData()
 
     }
@@ -78,7 +76,7 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
     func tableView(tableView: UITableView, var cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellAlle
         var data = TableData[indexPath.row]
         cell.title.text = data.title
         cell.beschreibung.text = data.description
@@ -97,11 +95,7 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-      
-            
             return TableData.count
-        
-        
     }
     func get_data_from_url(url:String)
     {
@@ -128,13 +122,9 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
                 self.extract_json(json!)
                 return
             })
-            
         }
-        
         task.resume()
-        
     }
-    
     
     func extract_json(data:NSString)
     {
@@ -160,34 +150,14 @@ class ViewController3: UIViewController, UITableViewDataSource, UITableViewDeleg
                         TableData.append(datastruct(add: data_block))
                     }
                 }
-                
-                
-                
-                
-                
             }
-            
             do_table_refresh()
-            
         }
-        
-        
-        
-        
     }
-    
-    
     func do_table_refresh()
     {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableViewOutlet.reloadData()
-            
         })
-        
     }
-    
-
-
-
-    
 }
