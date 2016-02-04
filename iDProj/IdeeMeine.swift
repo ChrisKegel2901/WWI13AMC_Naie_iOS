@@ -1,5 +1,5 @@
 //
-//  ViewController3.swift
+//  IdeeMeine.swift
 //  iDProj
 //
 //  Created by wilabor on 15.12.15.
@@ -8,13 +8,12 @@
 
 import Foundation
 
-class ViewController3: UIViewController {
+class IdeeMeine: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
