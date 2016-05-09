@@ -20,7 +20,7 @@ class IdeeAnmelden: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let tapGesture = UITapGestureRecognizer(target: self, action: "tap")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(IdeeAnmelden.tap))
         self.view.addGestureRecognizer(tapGesture)
        
     }
@@ -36,18 +36,18 @@ class IdeeAnmelden: UIViewController {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
        
        
-        let username = UserName.text
+        let username = UserName.text?.stringByReplacingOccurrencesOfString(" ", withString: "")
         let password = Password.text
         
         ErrorText.text = ""
-        //if username! == "Detlef" && password == "123" {
+        if username! == "s12345" && password == "123" {
           returnValue = true
             prefs.setObject(username, forKey: "USERNAME")
-            
+            prefs.setObject("1", forKey: "USERID")
             //prefs.setObject(self.vorname, forKey: "VORNAME")
             prefs.setInteger(1, forKey: "ISLOGGEDIN")
             prefs.synchronize()
-        //}
+        }
         
         if returnValue
         {

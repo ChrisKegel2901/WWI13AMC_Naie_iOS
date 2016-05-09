@@ -13,9 +13,11 @@ class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var TableData:Array< datastruct > = Array < datastruct >()
     var TableDataFiltered:Array< datastruct > = Array < datastruct >()
-    var json_data_url = "http://www.chriskegel2901.bplaced.net/images/uploads/service_new.php"
+    var json_data_url = "http://thaspeedy.de:1194/api/idea/"
     let dateFormatter = NSDateFormatter()
     var counter: Int = 0
+    var test: UIImageView?
+
     @IBAction func filterAction(sender: UISegmentedControl) {
         
         if (counter == 0){
@@ -39,16 +41,24 @@ class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     struct datastruct
     {
+        var id:String?
+        var medialink:String?
         var title:String?
         var description:String?
         var date:String?
         var votes:String?
+        var kat:String?
+         var user:String?
         init(add: NSDictionary)
         {
-            title = add["name"] as? String
-            description = add["strasse"] as? String
-            date = add["plz"] as? String
-            votes = add["bewertung"] as? String
+            id = add["ideaid"] as? String
+            medialink = add["medialink"] as? String
+            title = add["titel"] as? String
+            description = add["description"] as? String
+            date = add["ideadate"] as? String
+           // votes = add["bewertung"] as? String
+            kat = add["catid"] as? String
+            user = add["userid"] as? String
         }
     }
 
@@ -58,8 +68,13 @@ class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         tableViewOutlet.dataSource = self
         tableViewOutlet.delegate = self
+        let bild = UIImage(named: "background")
+        test = UIImageView(image: bild)
+        tableViewOutlet.backgroundView = test
+       tableViewOutlet.backgroundColor = UIColor.clearColor()
         get_data_from_url(json_data_url)
 
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -70,20 +85,49 @@ class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableViewOutlet.reloadData()
 
     }
+    @IBAction func go(sender: UIBarButtonItem) {
+        self.revealViewController().revealToggle(self)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func tableView(tableView: UITableView, var cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellAlle
-        var data = TableData[indexPath.row]
+        let data = TableData[indexPath.row]
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
+        let datum = formatter.dateFromString(data.date!)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.timeZone = NSTimeZone(name: "MEZ")
+        let dateFertig = dateFormatter.stringFromDate(datum!)
+        var a:String = ""
+        a = dateFertig
+        
+        cell.labelDate.text = a
         cell.title.text = data.title
         cell.beschreibung.text = data.description
         cell.anzahlBewertungen.text = data.votes
-       // dateFormatter.dateFormat = Short
+        if(data.kat == "1" || data.kat == "2" || data.kat == "3" || data.kat == "9" || data.kat == "10" ){
+            cell.kategorieImage.image = UIImage(named: "Steckdose_50x50px.png")
+        }
+        else if(data.kat == "4" || data.kat == "5"){
+            cell.kategorieImage.image = UIImage(named: "Messer_Gabel_50x50px.png")
+        }
+        else if(data.kat == "6" || data.kat == "7" || data.kat == "8"){
+            cell.kategorieImage.image = UIImage(named: "Gluehbirne_50x50px.png")
+        }
+        else if(data.kat == "11"){
+            cell.kategorieImage.image = UIImage(named: "SocialLife_50x50px.png")
+        }
         
-        cell.datum = Double(data.date!)!
+        
+        cell.kategorieImage.layer.cornerRadius = cell.kategorieImage.frame.size.width / 2
+        cell.kategorieImage.clipsToBounds = true
+       
+        
         
         return cell
         
@@ -118,46 +162,61 @@ class IdeeAlle: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                let json = NSString(data: data!, encoding: NSASCIIStringEncoding)
-                self.extract_json(json!)
+                
+                self.extract_json(data!)
                 return
             })
         }
         task.resume()
     }
     
-    func extract_json(data:NSString)
+    func extract_json(data:NSData)
     {
-        var parseError: NSError?
-        let jsonData:NSData = data.dataUsingEncoding(NSASCIIStringEncoding)!
-        let json: AnyObject?
-        do {
-            json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-        } catch let error as NSError {
-            parseError = error
-            print("fehler")
-            json = nil
-        }
-        if (parseError == nil)
-        {
-            if let list = json as? NSArray
-            {
-                for (var i = 0; i < list.count ; i++ )
-                {
-                    if let data_block = list[i] as? NSDictionary
+       
+            
+            do{
+                
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options:.AllowFragments)
+                
+               
+                    if let list = json as? NSArray
                     {
-                        
-                        TableData.append(datastruct(add: data_block))
+                        for i in 0...(list.count - 1)
+                        {
+                            if let data_block = list[i] as? NSDictionary
+                            {
+                                
+                                TableData.append(datastruct(add: data_block))
+                            }
+                        }
                     }
-                }
+                    do_table_refresh()
+                
+
+                
+            }catch {
+                print("Error with Json: \(error)")
             }
-            do_table_refresh()
-        }
-    }
+            
+            }
     func do_table_refresh()
     {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableViewOutlet.reloadData()
         })
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailSegue" {
+            let nextScene =  segue.destinationViewController as! IdeeDetail
+            let holder = tableViewOutlet.indexPathForSelectedRow
+            let cell = tableViewOutlet.cellForRowAtIndexPath(holder!) as! CellAlle
+            
+            // Pass the selected object to the new view controller.
+            nextScene.titel = cell.title.text!
+            nextScene.category = cell.kat
+            nextScene.beschreibung = cell.beschreibung.text!
+           
+            
+        }
     }
 }

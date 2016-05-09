@@ -15,7 +15,7 @@ class BackTableVC: UITableViewController {
     @IBOutlet weak var user: UILabel!
    
     override func viewDidLoad() {
-        TableArray = ["Alle Ideen", "Idee einreichen", "Meine Ideen", "Logout"]
+        TableArray = ["Alle Ideen", "Idee einreichen","Kategorien", "Meine Ideen", "Logout"]
         //self.view.backgroundColor = UIColor.lightGrayColor()
        
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -33,8 +33,21 @@ class BackTableVC: UITableViewController {
         //erstellte Zelle zurückgeben
         
         cell.textLabel?.text = TableArray[indexPath.row]
-        cell.backgroundColor = UIColor(red:0.83, green:0.33, blue:0.25, alpha:1.0)
+        cell.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.textColor = UIColor.blackColor()
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "logoutSegue"{
+            let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+            prefs.setObject("", forKey: "USERNAME")
+            
+            //prefs.setObject(self.vorname, forKey: "VORNAME")
+            prefs.setInteger(0, forKey: "ISLOGGEDIN")
+
+        }
+    }
+    
 }

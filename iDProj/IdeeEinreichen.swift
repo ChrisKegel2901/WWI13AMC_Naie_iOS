@@ -8,14 +8,26 @@
 
 import Foundation
 
-class IdeeEinreichen: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class IdeeEinreichen: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate{
     
     @IBOutlet weak var ideaDescription: UITextView!
     @IBOutlet weak var ideaTitle: UITextField!
     @IBOutlet weak var ideaCategory: UIPickerView!
     var categories1:[String] = []
     var category: String = ""
-    
+  
+    @IBAction func go(sender: AnyObject) {
+        self.revealViewController().revealToggle(self)
+
+    }
+    func call1(){
+        let alertController = UIAlertController(title: "Idee eingereicht", message: "Vielen Dank für deine Idee! Die Idee wurde erfolgreich an unseren Server übermittelt!", preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,20 +37,20 @@ class IdeeEinreichen: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let categories = prefs.arrayForKey("CATEGORIES")
         
         //Übergabe der Cachewerte an lokales Array
-        for (var i = 0; i < categories?.count ; i++ )
+        for i in 0...((categories?.count)! - 1)
         {
           categories1.append(categories![i] as! String)
         }
-        
+        ideaDescription.textColor = UIColor.lightGrayColor()
         //Initialisierung für UIPickerView für Kategorieauswahl
         self.ideaCategory.dataSource = self;
         self.ideaCategory.delegate = self;
-        
+        ideaDescription.delegate = self
         //Recognizer für Menüband Slide
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         //Check Tap um Tastatur auszublenden
-        let tapGesture = UITapGestureRecognizer(target: self, action: "tap")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(IdeeEinreichen.tap))
         self.view.addGestureRecognizer(tapGesture)
     }
     
@@ -59,6 +71,9 @@ class IdeeEinreichen: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         print(category)
         print(description)
         print("Senden Ende")
+        ideaDescription.text = ""
+        ideaTitle.text = ""
+        self.call1()
     }
     
     //Implementierung PickerView
@@ -70,11 +85,23 @@ class IdeeEinreichen: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return categories1.count
     }
     //PickerVIew befuellen
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!{
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         category = categories1[row]
         return categories1[row]
     }
+    func textViewDidBeginEditing(textView: UITextView) {
+        if ideaDescription.textColor == UIColor.lightGrayColor() {
+            ideaDescription.text = nil
+            ideaDescription.textColor = UIColor.blackColor()
+        }
+    }
     
+    func textViewDidEndEditing(textView: UITextView) {
+        if ideaDescription.text.isEmpty {
+            ideaDescription.text = "Beschreibung"
+            ideaDescription.textColor = UIColor.lightGrayColor()
+        }
+    }
     func tap() {
         print("Tapped!")
         self.view.endEditing(true)

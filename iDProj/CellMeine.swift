@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import UIKit
+
+class CellMeine: UITableViewCell{
+    
+    
+       
+    
+    override func awakeFromNib() {
+        
+        
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+}
